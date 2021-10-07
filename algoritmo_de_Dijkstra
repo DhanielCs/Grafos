@@ -4,9 +4,12 @@ import math
 class PilhaMin:
 
     def __init__(self):
-        self.nos = 0
-        self.heap = []
+        self.nos = 0          # E a quanidade de vertices no inicio
+                           
+         self.heap = []      # E a estrutura que inicia vazia e vamos adicionando....
+      
 
+                                            # u = peso que iremos colocar, indice = vertice que esta relacionado aquela peso (distancia)
     def adiciona_no(self, u, indice):
         self.heap.append([u, indice])
         self.nos += 1
@@ -15,7 +18,7 @@ class PilhaMin:
             if f == 1:
                 break
             p = f // 2
-            if self.heap[p-1][0] <= self.heap[f-1][0]:
+            if self.heap[p-1][0] <= self.heap[f-1][0]:  # em cada
                 break
             else:
                 self.heap[p-1], self.heap[f-1] = self.heap[f-1], self.heap[p-1]
@@ -58,24 +61,8 @@ class PilhaMin:
     def tamanho(self):
         return self.nos
 
-    def menor_elemento(self):
-        if self.nos != 0:
-            return self.heap[0]
-        return 'A árvore está vazia'
 
-    def filho_esquerda(self, u):
-        if self.nos >= 2*u:
-            return self.heap[2*u-1]
-        return 'Esse nó não tem filho'
-
-    def filho_direita(self, u):
-        if self.nos >= 2*u+1:
-            return self.heap[2*u]
-        return 'Esse nó não tem filho da direita'
-
-    def pai(self, u):
-        return self.heap[u // 2]
-
+# Classe Grafo será apenas para adicionar aresta e exibir a matriz
 
 class Grafo:
 
@@ -125,3 +112,4 @@ g.mostra_matriz()
 
 resultado_dijkstra = g.dijkstra(1)
 print(resultado_dijkstra)
+
